@@ -9,10 +9,10 @@ import java.util.Scanner;
  * 2)calculate surface area of the square(if any) that made by two short edges 
  * 3)calculate the volume of the cuboid
  * @author Yanyan Yang
- * @version 1.0 9/17/2019
+ * @version 1.1 9/17/2019
  *
  */
-public class CuboidCalculation {
+public class CuboidCalculation1 {
 	/*
 	 * This function is used to ensure user enter a decimal number
 	 * It keeps asking user input until getting a valid decimal number
@@ -20,7 +20,7 @@ public class CuboidCalculation {
 	 * @return:  double 
 	 */
 	public static double decimalInput(Scanner s) {
-		double input=0;
+		double input;
 		while(true) {
 			try {
 				input=Double.parseDouble(s.next());
@@ -31,14 +31,17 @@ public class CuboidCalculation {
 				System.out.println("Please enter again: ");
 			}
 		}
+		
 	}
 	
 	/*
 	 * This function is used to validate if a number is positive
+	 * It returns true for a number<=0
+	 * It return false for a number>0
 	 * @return: boolean
 	 */
-	public static boolean isPositive(double num) {
-		if(num>0)
+	public static boolean notPositive(double num) {
+		if(num<=0)
 			return true;
 		else
 			return false;
@@ -46,10 +49,13 @@ public class CuboidCalculation {
 	
 	/*
 	 * This function is used to validate if a number is integer
+	 * It returns true for a number that has 0 fraction
 	 * @return: boolean 
 	 */
 	public static boolean isInteger(double num) {
-		return Math.ceil(num)==Math.floor(num);
+		if(Math.floor(num)==num)
+			return true;
+		return false;
 	}
 	/*
 	 * This function is used to ask input
@@ -63,7 +69,7 @@ public class CuboidCalculation {
 	 */
 	public static void displayError(String s) {
 		System.out.println("The input is not a positive decimal number");
-		System.out.println("Please enter again: ");
+		System.out.printf("Please enter a number for %s again: \n",s);
 	}
 	
 	/*
@@ -78,6 +84,22 @@ public class CuboidCalculation {
 		Collections.sort(list);
 		return list;
 	}
+	/*
+	 * This function is used to calculate the surface area of the square made by two shorter edges
+	 * It displays the square surface area result if there is one 
+	 * It displays error message if no square surface area for the given cuboid
+	 */
+	public static void squareSurfaceArea(double num1, double num2) {
+		if(num1==num2) {
+			double squareSurface=num1*num2;
+			System.out.println("The surface area of the square made by two"
+					+ " shorter edges are: "+squareSurface);
+		}
+		else {
+			System.out.println("There is no square surface area "
+					+ "made by the given cuboid");
+		}
+	}
 
 	public static void main(String[] args) {
 		Scanner s=new Scanner(System.in);
@@ -85,25 +107,26 @@ public class CuboidCalculation {
 		//Acquire a valid length: non-zero, non-negative, non-integer
 		inputPrompt("LENGTH");
 		double length=decimalInput(s);
-		while((isPositive(length)==false||(isInteger(length)==true))){
+		while((notPositive(length)||(isInteger(length)))){
 			displayError("LENGTH");
+			System.out.println("ask user agian ");
 			length=decimalInput(s);
 		}
 		
 		//Acquire a valid breadth:non-zero, non-negative, non-integer
 		inputPrompt("BREADTH");
 		double breadth=decimalInput(s);
-		while((isPositive(breadth)==false||(isInteger(breadth)==true))){
+		while((notPositive(breadth)||(isInteger(breadth)))){
 			displayError("BREADTH");
-			length=decimalInput(s);
+			breadth=decimalInput(s);
 		}
 		
 		//Acquire a valid height:non-zero, non-negative, non-integer
 		inputPrompt("HEIGHT");
 		double height=decimalInput(s);
-		while((isPositive(height)==false||(isInteger(height)==true))){
+		while((notPositive(height)||(isInteger(height)))){
 			displayError("HEIGHT");
-			length=decimalInput(s);
+			height=decimalInput(s);
 		}
 		
 		//sort input in ascending order
@@ -117,21 +140,11 @@ public class CuboidCalculation {
 		System.out.println("The longest edge is "+longestEdge);
 		
 		//calculate surface area of the square made by two shorter edge
-		if(shortestEdge==shorterEdge) {
-			double squareSurface=shortestEdge*shorterEdge;
-			System.out.println("The surface area of the square made by two"
-					+ " shorter edges are: "+squareSurface);
-		}
-		else {
-			System.out.println("There is no square surface area "
-					+ "made by the given cuboid");
-		}
+		squareSurfaceArea(shortestEdge,shorterEdge);
+		
 		//calculate the volume of the cuboid
 		double volumn=length*breadth*height;
 		System.out.println("The volumn of the cuboid is "+volumn);
-		
-		
 		}
 }
 	
-
