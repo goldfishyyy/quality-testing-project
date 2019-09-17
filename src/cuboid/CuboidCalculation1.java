@@ -109,7 +109,6 @@ public class CuboidCalculation1 {
 		double length=decimalInput(s);
 		while((notPositive(length)||(isInteger(length)))){
 			displayError("LENGTH");
-			System.out.println("ask user agian ");
 			length=decimalInput(s);
 		}
 		
