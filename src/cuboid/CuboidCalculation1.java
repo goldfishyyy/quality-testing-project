@@ -9,7 +9,7 @@ import java.util.Scanner;
  * 2)calculate surface area of the square(if any) that made by two short edges 
  * 3)calculate the volume of the cuboid
  * @author Yanyan Yang
- * @version 1.1 9/17/2019
+ * @version 1.2 9/18/2019
  *
  */
 public class CuboidCalculation1 {
@@ -93,7 +93,7 @@ public class CuboidCalculation1 {
 		if(num1==num2) {
 			double squareSurface=num1*num2;
 			System.out.println("The surface area of the square made by two"
-					+ " shorter edges are: "+squareSurface);
+					+ " shorter edges are: "+squareSurface+ "square cm");
 		}
 		else {
 			System.out.println("There is no square surface area "
@@ -109,7 +109,6 @@ public class CuboidCalculation1 {
 		double length=decimalInput(s);
 		while((notPositive(length)||(isInteger(length)))){
 			displayError("LENGTH");
-			System.out.println("ask user agian ");
 			length=decimalInput(s);
 		}
 		
@@ -144,7 +143,8 @@ public class CuboidCalculation1 {
 		
 		//calculate the volume of the cuboid
 		double volumn=length*breadth*height;
-		System.out.println("The volumn of the cuboid is "+volumn);
+		System.out.println("The volume of the cuboid is "+volumn+" cubic cm");
+		
 		}
 }
 	
