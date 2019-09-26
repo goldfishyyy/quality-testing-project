@@ -11,7 +11,7 @@ import java.util.*;
  * user 4)find integer pairs that sum up to the target
  * 
  * @author Yanyan Yang
- * @version 1.0 9/24/2019
+ * @version 1.2 9/25/2019
  *
  */
 public class SumPair {
