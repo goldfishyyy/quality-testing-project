@@ -38,12 +38,11 @@ public class SumPair {
 	 * This function is used to get inputs for the array
 	 * It requires user to enter distinct integer for desired length array
 	 * It displays the given array when the it is valid(integer, no duplicate) 
-	 * @param arraylength: the length of the array 
+	 * @params arraylength: the length of the array, scanner
 	 * @return ArrayList<Integer>
 	 */
-	public static ArrayList<Integer> getInputs(int arrayLength) {
+	public static ArrayList<Integer> getInputs(int arrayLength, Scanner s) {
 		ArrayList<Integer> inputArray=new ArrayList<>();
-		Scanner s=new Scanner(System.in);
 		System.out.printf("Please enter %d numbers:\n",arrayLength);
 		for(int i=0;i<arrayLength;i++) {
 			try {
@@ -93,13 +92,20 @@ public class SumPair {
 	 * @params inputArray, target number
 	 */
 	public static  void sumPair(ArrayList<Integer>inputArray,int target) {
+		boolean pairFound = false;
 		for(int i=0;i<inputArray.size();i++) {
 			for(int j=i+1;j<inputArray.size();j++) {
 				if(inputArray.get(j)==target-inputArray.get(i)) {
 					System.out.println("["+inputArray.get(j)+","+inputArray.get(i)+"]");
+					pairFound = true;
 				}
 			}
-		}throw new IllegalArgumentException("No solution: can't find integer pairs for the given target ");
+		}
+		if(!pairFound)
+		{
+			System.out.println("No solution: can't find integer pairs for the given target");
+		}
+		//throw new IllegalArgumentException("No solution: can't find integer pairs for the given target ");
 	}
 	public static void main(String[] args) {
 		Scanner s=new Scanner(System.in);
@@ -107,13 +113,14 @@ public class SumPair {
 		int arrayLength=getArrayLength(s);
 		
 		//get valid array element from user
-		ArrayList<Integer> inputArray=getInputs(arrayLength);
+		ArrayList<Integer> inputArray=getInputs(arrayLength, s);
 		
 		//get the target number
 		int target=getTarget(s);
 		
 		//find integer pairs for given array
 		sumPair(inputArray,target);
+		s.close();
 	}
 
 }
