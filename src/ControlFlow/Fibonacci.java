@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Fibonacci {
 
 	public static void main(String[] args) {
+<<<<<<< Updated upstream
             
             int elements = -1;
             
@@ -32,6 +33,12 @@ public class Fibonacci {
             
             //Running the start of the recursive function
             recursiveFibonacci(elements);
+=======
+		// TODO Auto-generated method stub
+		recursiveFibonacci(7);
+		recursiveFibonacci(11);
+		recursiveFibonacci(0);
+>>>>>>> Stashed changes
 	}
 	
 	/*
@@ -41,12 +48,23 @@ public class Fibonacci {
 	 * number in the sequence and calls the fib() method passing it the first two numbers in the sequence
 	 * and n-1. Finally this method will end the line with a \n character and return to the caller.
 	 * */
+<<<<<<< Updated upstream
 	public static void recursiveFibonacci(int n){
             if(n > 0){
 		System.out.print("0");
 		fib(0, 1, n-1);
 		System.out.print('\n');
             }
+=======
+	public static void recursiveFibonacci(int n)
+	{
+		if(n > 0)
+		{
+			System.out.print("0");
+			fib(0, 1, n-1);
+			System.out.print('\n');
+		}
+>>>>>>> Stashed changes
 	}
 	
 	/*
@@ -54,6 +72,7 @@ public class Fibonacci {
 	 * further Fibonacci numbers. If there are more numbers to print it will continue to
 	 * call itself decrementing n each time.
 	 * */
+<<<<<<< Updated upstream
 	public static void fib(int a, int b, int n){
             // if i is the nth fib number then we're done
             if(n == 0){
@@ -64,6 +83,19 @@ public class Fibonacci {
                 //a+b will be the next number in the sequence and the n-1 is what will eventually terminate the recursive calls
 		fib(b, a+b, n-1);			
             }
+=======
+	public static void fib(int a, int b, int n)
+	{
+		if(n == 0)// if i is the nth fib number then we're done
+		{
+			return;
+		}
+		else
+		{
+			System.out.print(", "+b);	//print the ", " to make the output look organized and readable
+			fib(b, a+b, n-1);			//a+b will be the next number in the sequence and the n-1 is what will eventually terminate the recursive calls
+		}
+>>>>>>> Stashed changes
 	}
 	
 	
