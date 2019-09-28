@@ -113,8 +113,6 @@ public class SumPair {
 		if (!pairFound) {
 			System.out.println("No solution: can't find integer pairs for the given target");
 		}
-		// throw new IllegalArgumentException("No solution: can't find integer pairs for
-		// the given target ");
 	}
 
 	public static void main(String[] args) {
