@@ -33,7 +33,6 @@ public class Tickets {
                     try{ 
                         age = input.nextInt();
                     }catch(Exception e){
-                        System.out.println("\tNot a valid input");
                         age = -1;
                         input.nextLine();
                     } 
@@ -46,7 +45,6 @@ public class Tickets {
                     try{ 
                         gender = input.nextInt();
                     }catch(Exception e){
-                        System.out.println("\tNot a valid input");
                         gender = -1;
                         input.nextLine();
                     }  
