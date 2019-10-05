@@ -70,10 +70,12 @@ public class Tickets {
             }else if(age > 10 && age <= 15){
                 if(gender == 0){ return "Quiz"; }
                 if(gender == 1){ return "Essay writing"; }            
-            }else{
+            }else if(age > 15 && age <= 18){
                 //age is 15+ 
                 return "Poetry competition";
-            }
+            }else{
+	    	return "No Ticket available!";
+	    }
             
             return "Unexpected Error";
         }
